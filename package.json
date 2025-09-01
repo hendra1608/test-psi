@@ -1,12 +1,16 @@
 {
-  "name": "test-psi",
-  "version": "1.0.0",
-  "description": "Proyek full-stack dengan Next.js untuk frontend dan NestJS di backend, terintegrasi dengan Prisma sebagai ORM dan Swagger untuk dokumentasi API. Dirancang untuk keperluan pengujian dan eksplorasi arsitektur aplikasi modern berbasis JavaScript/TypeScript.",
-  "main": "index.js",
+  "name": "my-app",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "apps/*",
+    "shared/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "dev:backend": "npm run start:dev --workspace backend",
+    "dev:frontend": "npm run dev --workspace frontend",
+    "dev": "npm run dev:backend & npm run dev:frontend",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces"
+  }
 }
