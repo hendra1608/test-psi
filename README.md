@@ -2,7 +2,7 @@
 
 Repository ini berisi dua aplikasi dalam satu monorepo:
 
-- **Backend** → NestJS + Prisma  
+- **Backend** → NestJS + Prisma 
 - **Frontend** → Next.js  
 
 ## 📂 Struktur Folder
