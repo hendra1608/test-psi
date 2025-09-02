@@ -5,11 +5,10 @@ import { useRouter } from "next/navigation"
 import { useAuthStore } from "../store/authStore"
 
 export default function HomePage() {
-  const { isAuthenticated ,checkAuth} = useAuthStore()
+  const { isAuthenticated } = useAuthStore()
   const router = useRouter()
 
   useEffect(() => {
-    checkAuth()
     if (isAuthenticated) {
       router.push("/data")
     } else {

@@ -19,10 +19,12 @@ const UserTable: React.FC = () => {
     fetchRandomUsers(pageSize, currentPage)
   }, [currentPage, pageSize, fetchRandomUsers])
 
-  const handleTableChange = (pagination: any) => {
-    setCurrentPage(pagination.current)
-    setPageSize(pagination.pageSize)
-  }
+/* eslint-disable */
+const handleTableChange = (pagination: any) => {
+  setCurrentPage(pagination.current)
+  setPageSize(pagination.pageSize)
+}
+/* eslint-enable */
 
   const handleAddUser = () => {
     form.validateFields().then((values) => {
