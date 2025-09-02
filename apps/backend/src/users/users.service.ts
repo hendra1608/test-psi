@@ -33,6 +33,7 @@ export class UsersService {
     queries: RandomUserQueryDTO,
   ): Promise<RandomUserResponseDTO[]> {
     const { results, page } = queries;
+    console.log(queries)
     const randomUsersFetch = await fetch(
       `https://randomuser.me/api?results=${results}&page=${page}`,
     );

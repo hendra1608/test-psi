@@ -1,4 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { IsNumber, IsOptional, Min } from 'class-validator';
 import { randomUUID } from 'crypto';
 
 export class GetUserListResponseDTO {
@@ -123,20 +125,31 @@ export class RandomUserApiResponseDTO {
   };
 }
 
+
 export class RandomUserQueryDTO {
   @ApiProperty({
     type: Number,
     example: 10,
     description: 'The number of results',
+    required: false
   })
-  results: number;
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  @Min(1)
+  results?: number = 10;
 
   @ApiProperty({
     type: Number,
     example: 1,
     description: 'The page number',
+    required: false
   })
-  page: number;
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  @Min(1)
+  page?: number = 1;
 }
 
 export class RandomUserResponseDTO {
