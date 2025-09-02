@@ -24,7 +24,6 @@ export class UsersController {
   async getRandomUser(
     @Query() queries: RandomUserQueryDTO,
   ): Promise<CommonResponseDTO<RandomUserResponseDTO[]>> {
-    console.log(queries)
     const data = await this.usersService.getRandomUser(queries);
     return {
       success: true,

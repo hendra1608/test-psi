@@ -6,7 +6,6 @@ import {
   RandomUserQueryDTO,
   RandomUserResponseDTO,
 } from './dto/user.dto';
-import axios from 'axios';
 
 @Injectable()
 export class UsersService {
@@ -29,11 +28,11 @@ export class UsersService {
       })),
     );
   }
+  
   async getRandomUser(
     queries: RandomUserQueryDTO,
   ): Promise<RandomUserResponseDTO[]> {
     const { results, page } = queries;
-    console.log(queries)
     const randomUsersFetch = await fetch(
       `https://randomuser.me/api?results=${results}&page=${page}`,
     );

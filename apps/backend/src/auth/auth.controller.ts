@@ -32,13 +32,26 @@ export class AuthController {
       user: req.user,
     };
 
-    return res.json(response);
+     return res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:3000'}/users`);
+
   }
 
   @Get('me')
   @UseGuards(AuthGuard('jwt'))
   @ApiOkResponse({ type: UserDto })
   async getProfile(@Req() req): Promise<UserDto> {
+    console.log(req.user,'req.user')
     return req.user;
   }
+
+@Get('logout')
+logout(@Res() res: Response) {
+  res.clearCookie('Authentication', {
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax',
+    path: '/',
+  });
+  return res.status(200).json({ message: 'Logged out successfully' });
+}
 }
